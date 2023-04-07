@@ -103,7 +103,7 @@ export default function DashLayout({
                 onClick={() => toggleFullView()}
               />
               <Box className={classes.head}>
-                <Text className={classes.title}>Tespen</Text>
+                <Text className={classes.title}>Name</Text>
                 <IconUserCircle size={32} />
               </Box>
             </div>
