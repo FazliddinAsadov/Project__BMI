@@ -8,7 +8,7 @@ import {
   Tooltip,
   useMantineTheme,
 } from "@mantine/core";
-import { useToggle } from "@mantine/hooks";
+import { useDisclosure, useToggle } from "@mantine/hooks";
 import { IconUserCircle } from "@tabler/icons-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -26,6 +26,7 @@ export default function DashLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [opened, { toggle, close }] = useDisclosure(false);
   const theme = useMantineTheme();
   const [activeId, setActiveId] = useState(null);
   const router = useRouter();
@@ -38,7 +39,10 @@ export default function DashLayout({
         <Link
           href={item.link}
           style={item.id === activeId ? activeStyle : {}}
-          onClick={() => setActiveId(item.id)}
+          onClick={() => {
+            setActiveId(item.id);
+            close();
+          }}
           className={cx(classes.link, {
             linkActive: item.link === router.pathname,
           })}
@@ -67,50 +71,52 @@ export default function DashLayout({
       navbarOffsetBreakpoint="xs"
       asideOffsetBreakpoint="xs"
       navbar={
-        <Navbar
-          hiddenBreakpoint="sm"
-          width={{
-            sm: !fullView ? 250 : "min-content",
-            lg: !fullView ? 300 : "min-content",
-          }}
-          sx={{
-            position: fullView ? "static" : "fixed",
-            zIndex: 999,
-          }}
-          p={!fullView ? "md" : 0}
-        >
-          {fullView && (
-            <Text className={classes.link}>
-              <Burger
-                size={"sm"}
-                opened={!fullView}
-                onClick={() => toggleFullView()}
-              />
-            </Text>
-          )}
-          {links}
-        </Navbar>
-      }
-      header={
         !fullView ? (
-          <Header height={{ base: 50, md: 70 }} p="md">
-            <div className={classes.head__div}>
-              <Burger
-                size="sm"
-                color={theme.colors.gray[6]}
-                mr="xl"
-                opened={!fullView}
-                onClick={() => toggleFullView()}
-              />
-              <Box className={classes.head}>
-                <Text className={classes.title}>Name</Text>
-                <IconUserCircle size={32} />
-              </Box>
-            </div>
-          </Header>
+          <Navbar
+            // hiddenBreakpoint="sm"
+            width={{
+              sm: !fullView ? 250 : "min-content",
+              md: !fullView ? 300 : "min-content",
+              lg: !fullView ? 300 : "min-content",
+              xl: !fullView ? 300 : "min-content",
+            }}
+            sx={{
+              position: fullView ? "static" : "fixed",
+              zIndex: 999,
+            }}
+            p={!fullView ? "md" : 0}
+          >
+            {fullView && (
+              <Text className={classes.link}>
+                <Burger
+                  size={"sm"}
+                  opened={!fullView}
+                  onClick={() => toggleFullView()}
+                />
+              </Text>
+            )}
+            {links}
+          </Navbar>
         ) : (
           <></>
         )
+      }
+      header={
+        <Header height={{ base: 50, md: 70 }} p="md">
+          <div className={classes.head__div}>
+            <Burger
+              size="sm"
+              color={theme.colors.gray[6]}
+              mr="xl"
+              opened={!fullView}
+              onClick={() => toggleFullView()}
+            />
+            <Box className={classes.head}>
+              <Text className={classes.title}>Name</Text>
+              <IconUserCircle size={32} />
+            </Box>
+          </div>
+        </Header>
       }
     >
       <Box mx={10}>{children}</Box>

@@ -13,6 +13,12 @@ const dataPages = [
     link: "/categories",
     label: "Category",
     icon: IconCategory,
+    links: [
+      { label: "Overview", link: "/" },
+      { label: "Forecasts", link: "/" },
+      { label: "Outlook", link: "/" },
+      { label: "Real time", link: "/" },
+    ],
   },
 ];
 export default dataPages;
