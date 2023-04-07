@@ -70,7 +70,7 @@ export default function DashLayout({
         <Navbar
           hiddenBreakpoint="sm"
           width={{
-            md: !fullView ? 250 : "min-content",
+            sm: !fullView ? 250 : "min-content",
             lg: !fullView ? 300 : "min-content",
           }}
           sx={{
