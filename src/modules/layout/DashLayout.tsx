@@ -7,6 +7,7 @@ import {
   Text,
   Tooltip,
   useMantineTheme,
+  Accordion,
 } from "@mantine/core";
 import { useDisclosure, useToggle } from "@mantine/hooks";
 import { IconUserCircle } from "@tabler/icons-react";
@@ -33,31 +34,31 @@ export default function DashLayout({
   const { classes, cx } = useDashStyle();
   const [fullView, toggleFullView] = useToggle();
 
-  const links = dataPages.map((item: any) => {
-    return (
-      <Tooltip label={item.label} position="left" withArrow key={item.label}>
-        <Link
-          href={item.link}
-          style={item.id === activeId ? activeStyle : {}}
-          onClick={() => {
-            setActiveId(item.id);
-            close();
-          }}
-          className={cx(classes.link, {
-            linkActive: item.link === router.pathname,
-          })}
-        >
-          <item.icon
-            className={cx(classes.linkIcon, {
-              iconFull: !fullView,
-            })}
-            stroke={1.5}
-          />
-          {!fullView ? <Text>{item.label}</Text> : null}
-        </Link>
-      </Tooltip>
-    );
-  });
+  // const links = dataPages.map((item: any) => {
+  //   return (
+  //     <Tooltip label={item.label} position="left" withArrow key={item.label}>
+  //       <Link
+  //         href={item.link}
+  //         style={item.id === activeId ? activeStyle : {}}
+  //         onClick={() => {
+  //           setActiveId(item.id);
+  //           close();
+  //         }}
+  //         className={cx(classes.link, {
+  //           linkActive: item.link === router.pathname,
+  //         })}
+  //       >
+  //         <item.icon
+  //           className={cx(classes.linkIcon, {
+  //             iconFull: !fullView,
+  //           })}
+  //           stroke={1.5}
+  //         />
+  //         {!fullView ? <Text>{item.label}</Text> : null}
+  //       </Link>
+  //     </Tooltip>
+  //   );
+  // });
   return (
     <AppShell
       styles={{
@@ -95,7 +96,20 @@ export default function DashLayout({
                 />
               </Text>
             )}
-            {links}
+
+            <Accordion defaultValue="customization">
+              <Accordion.Item value="customization">
+                <Accordion.Control>Home</Accordion.Control>
+                <Accordion.Panel>more</Accordion.Panel>
+              </Accordion.Item>
+
+              <Accordion.Item value="flexibility">
+                <Accordion.Control>Categories</Accordion.Control>
+                <Accordion.Panel>Book</Accordion.Panel>
+                <Accordion.Panel>Book</Accordion.Panel>
+                <Accordion.Panel>Book</Accordion.Panel>
+              </Accordion.Item>
+            </Accordion>
           </Navbar>
         ) : (
           <></>

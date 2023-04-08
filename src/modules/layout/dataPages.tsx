@@ -6,6 +6,11 @@ const dataPages = [
     link: "/",
     label: "Home",
     icon: IconHome,
+    links: [
+      { label: "Upcoming releases", link: "/" },
+      { label: "Previous releases", link: "/" },
+      { label: "Releases schedule", link: "/" },
+    ],
   },
 
   {
