@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Icon24Hours } from "@tabler/icons-react";
 
 type Props = {};
 export const Home = (props: Props) => {

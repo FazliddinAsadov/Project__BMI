@@ -76,6 +76,26 @@ const useDashStyle = createStyles((theme, _params, getRef) => {
       justifyContent: "space-between",
       gap: 20,
     },
+    bob: {
+      fontSize: 32,
+      fontWeight: "bold",
+    },
+    linkActive: {
+      "&, &:hover": {
+        backgroundColor: theme.fn.variant({
+          variant: "light",
+          color: theme.primaryColor,
+        }).background,
+        color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
+          .color,
+        [`& .${getStylesRef("icon")}`]: {
+          color: theme.fn.variant({
+            variant: "light",
+            color: theme.primaryColor,
+          }).color,
+        },
+      },
+    },
   };
 });
 

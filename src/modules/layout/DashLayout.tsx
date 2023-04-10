@@ -1,21 +1,31 @@
 import {
+  Accordion,
   AppShell,
   Box,
   Burger,
+  Center,
+  Group,
   Header,
   Navbar,
+  SegmentedControl,
   Text,
-  Tooltip,
   useMantineTheme,
-  Accordion,
 } from "@mantine/core";
 import { useDisclosure, useToggle } from "@mantine/hooks";
-import { IconUserCircle } from "@tabler/icons-react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import dataPages from "./dataPages";
+import dashLayoutLocale from "./locale";
 import useDashStyle from "./style/useDashStyle";
+import dataPages from "@web/services/api/dataPages";
+import themaList from "@web/services/api/ThemaList";
+import {
+  IconUserCircle,
+  IconAppsFilled,
+  IconMicroscope,
+  IconMovie,
+  IconAddressBook,
+} from "@tabler/icons-react";
+import AccordionItem from "@web/components/AccordionItem";
 
 const activeStyle = {
   background: "#1864AB",
@@ -33,32 +43,74 @@ export default function DashLayout({
   const router = useRouter();
   const { classes, cx } = useDashStyle();
   const [fullView, toggleFullView] = useToggle();
+  const [section, setSection] = useState<"amaliy" | "tajriba" | "video">(
+    "amaliy"
+  );
+  const [active, setActive] = useState("Billing");
 
-  // const links = dataPages.map((item: any) => {
-  //   return (
-  //     <Tooltip label={item.label} position="left" withArrow key={item.label}>
-  //       <Link
-  //         href={item.link}
-  //         style={item.id === activeId ? activeStyle : {}}
-  //         onClick={() => {
-  //           setActiveId(item.id);
-  //           close();
-  //         }}
-  //         className={cx(classes.link, {
-  //           linkActive: item.link === router.pathname,
-  //         })}
-  //       >
-  //         <item.icon
-  //           className={cx(classes.linkIcon, {
-  //             iconFull: !fullView,
-  //           })}
-  //           stroke={1.5}
-  //         />
-  //         {!fullView ? <Text>{item.label}</Text> : null}
-  //       </Link>
-  //     </Tooltip>
-  //   );
-  // });
+  const links = dataPages[section].map((item) => (
+    <a
+      className={cx(classes.link, {
+        [classes.linkActive]: item.label === active,
+      })}
+      href={item.link}
+      key={item.label}
+      onClick={(event) => {
+        event.preventDefault();
+        setActive(item.label);
+      }}
+    >
+      <item.icon className={classes.linkIcon} stroke={1.5} />
+      <span>{item.label}</span>
+    </a>
+  ));
+
+  const SegmentControlItem = () => {
+    return (
+      <>
+        <SegmentedControl
+          color="orange"
+          value={section}
+          onChange={(value: "amaliy" | "tajriba") => setSection(value)}
+          transitionTimingFunction="ease"
+          fullWidth
+          data={[
+            {
+              label: (
+                <Center>
+                  <IconAppsFilled size="1rem" />
+                  <Box ml={10}>{dashLayoutLocale.amaliy}</Box>
+                </Center>
+              ),
+              value: "amaliy",
+            },
+            {
+              label: (
+                <Center>
+                  <IconMicroscope size="1rem" />
+                  <Box ml={10}>{dashLayoutLocale.tajriba}</Box>
+                </Center>
+              ),
+              value: "tajriba",
+            },
+            {
+              label: (
+                <Center>
+                  <IconMovie size="1rem" />
+                  <Box ml={10}>{dashLayoutLocale.video}</Box>
+                </Center>
+              ),
+              value: "video",
+            },
+          ]}
+        />
+        <Navbar.Section grow mt="xl">
+          {links}
+        </Navbar.Section>
+      </>
+    );
+  };
+
   return (
     <AppShell
       styles={{
@@ -77,9 +129,9 @@ export default function DashLayout({
             // hiddenBreakpoint="sm"
             width={{
               sm: !fullView ? 250 : "min-content",
-              md: !fullView ? 300 : "min-content",
-              lg: !fullView ? 300 : "min-content",
-              xl: !fullView ? 300 : "min-content",
+              md: !fullView ? 350 : "min-content",
+              lg: !fullView ? 350 : "min-content",
+              xl: !fullView ? 350 : "min-content",
             }}
             sx={{
               position: fullView ? "static" : "fixed",
@@ -96,20 +148,12 @@ export default function DashLayout({
                 />
               </Text>
             )}
-
-            <Accordion defaultValue="customization">
-              <Accordion.Item value="customization">
-                <Accordion.Control>Home</Accordion.Control>
-                <Accordion.Panel>more</Accordion.Panel>
-              </Accordion.Item>
-
-              <Accordion.Item value="flexibility">
-                <Accordion.Control>Categories</Accordion.Control>
-                <Accordion.Panel>Book</Accordion.Panel>
-                <Accordion.Panel>Book</Accordion.Panel>
-                <Accordion.Panel>Book</Accordion.Panel>
-              </Accordion.Item>
-            </Accordion>
+            <Group>
+              <Text className={classes.bob} pl={20}>
+                {dashLayoutLocale.bob}
+              </Text>
+            </Group>
+            <AccordionItem SegmentControlItem={SegmentControlItem} />
           </Navbar>
         ) : (
           <></>
