@@ -1,5 +1,4 @@
 import {
-  Accordion,
   AppShell,
   Box,
   Burger,
@@ -12,20 +11,20 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure, useToggle } from "@mantine/hooks";
+import {
+  IconAppsFilled,
+  IconMicroscope,
+  IconMovie,
+  IconUserCircle,
+} from "@tabler/icons-react";
+import AccordionItem from "@web/components/AccordionItem";
+import dataPages from "@web/services/api/dataPages";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import dashLayoutLocale from "./locale";
 import useDashStyle from "./style/useDashStyle";
-import dataPages from "@web/services/api/dataPages";
-import themaList from "@web/services/api/ThemaList";
-import {
-  IconUserCircle,
-  IconAppsFilled,
-  IconMicroscope,
-  IconMovie,
-  IconAddressBook,
-} from "@tabler/icons-react";
-import AccordionItem from "@web/components/AccordionItem";
+import ToggleTheme from "@web/components/darkMode/DarkLightMode";
+import locale from "@web/translate/locale";
 
 const activeStyle = {
   background: "#1864AB",
@@ -71,7 +70,9 @@ export default function DashLayout({
         <SegmentedControl
           color="orange"
           value={section}
-          onChange={(value: "amaliy" | "tajriba") => setSection(value)}
+          onChange={(value: "amaliy" | "tajriba" | "video") =>
+            setSection(value)
+          }
           transitionTimingFunction="ease"
           fullWidth
           data={[
@@ -128,7 +129,7 @@ export default function DashLayout({
           <Navbar
             // hiddenBreakpoint="sm"
             width={{
-              sm: !fullView ? 250 : "min-content",
+              sm: !fullView ? 330 : "min-content",
               md: !fullView ? 350 : "min-content",
               lg: !fullView ? 350 : "min-content",
               xl: !fullView ? 350 : "min-content",
@@ -170,8 +171,8 @@ export default function DashLayout({
               onClick={() => toggleFullView()}
             />
             <Box className={classes.head}>
-              <Text className={classes.title}>Name</Text>
-              <IconUserCircle size={32} />
+              <Text className={classes.title}>{locale.bmi}</Text>
+              <ToggleTheme />
             </Box>
           </div>
         </Header>

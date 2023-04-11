@@ -1,5 +1,5 @@
 const dashLayoutLocale = {
-  bob: "Bo'lim",
+  bob: "Texnik tizimlarda grafik modellashtirish",
   amaliy: "Amaliy",
   tajriba: "Tajriba",
   video: "Video",

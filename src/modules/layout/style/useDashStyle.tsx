@@ -77,7 +77,7 @@ const useDashStyle = createStyles((theme, _params, getRef) => {
       gap: 20,
     },
     bob: {
-      fontSize: 32,
+      fontSize: 24,
       fontWeight: "bold",
     },
     linkActive: {
