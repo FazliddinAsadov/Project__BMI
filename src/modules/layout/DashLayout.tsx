@@ -25,6 +25,7 @@ import dashLayoutLocale from "./locale";
 import useDashStyle from "./style/useDashStyle";
 import ToggleTheme from "@web/components/darkMode/DarkLightMode";
 import locale from "@web/translate/locale";
+import Link from "next/link";
 
 const activeStyle = {
   background: "#1864AB",
@@ -47,24 +48,31 @@ export default function DashLayout({
   );
   const [active, setActive] = useState("Billing");
 
-  const links = dataPages[section].map((item) => (
-    <a
-      className={cx(classes.link, {
-        [classes.linkActive]: item.label === active,
-      })}
-      href={item.link}
+  const links = dataPages[section].map((item: any) => (
+    <Link
       key={item.label}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(item.label);
-      }}
+      href={item.link}
+      style={item.id === activeId ? activeStyle : {}}
+      onClick={() => setActiveId(item.id)}
+      className={cx(classes.link, {
+        linkActive: item.link === router.pathname,
+      })}
     >
-      <item.icon className={classes.linkIcon} stroke={1.5} />
+      <item.icon
+        className={cx(classes.linkIcon, {
+          iconFull: !fullView,
+        })}
+        stroke={1.5}
+      />
       <span>{item.label}</span>
-    </a>
+    </Link>
   ));
 
-  const SegmentControlItem = () => {
+  const SegmentControlItem: React.FC<any> = ({
+    amaliyLink,
+    tajribaLink,
+    videoLink,
+  }) => {
     return (
       <>
         <SegmentedControl
@@ -80,7 +88,9 @@ export default function DashLayout({
               label: (
                 <Center>
                   <IconAppsFilled size="1rem" />
-                  <Box ml={10}>{dashLayoutLocale.amaliy}</Box>
+                  <Box ml={10} onClick={() => router.push(`/${amaliyLink}`)}>
+                    {dashLayoutLocale.amaliy}
+                  </Box>
                 </Center>
               ),
               value: "amaliy",
@@ -89,7 +99,9 @@ export default function DashLayout({
               label: (
                 <Center>
                   <IconMicroscope size="1rem" />
-                  <Box ml={10}>{dashLayoutLocale.tajriba}</Box>
+                  <Box ml={10} onClick={() => router.push(`/${tajribaLink}`)}>
+                    {dashLayoutLocale.tajriba}
+                  </Box>
                 </Center>
               ),
               value: "tajriba",
@@ -98,16 +110,15 @@ export default function DashLayout({
               label: (
                 <Center>
                   <IconMovie size="1rem" />
-                  <Box ml={10}>{dashLayoutLocale.video}</Box>
+                  <Box ml={10} onClick={() => router.push(`/${videoLink}`)}>
+                    {dashLayoutLocale.video}
+                  </Box>
                 </Center>
               ),
               value: "video",
             },
           ]}
         />
-        <Navbar.Section grow mt="xl">
-          {links}
-        </Navbar.Section>
       </>
     );
   };
@@ -171,7 +182,9 @@ export default function DashLayout({
               onClick={() => toggleFullView()}
             />
             <Box className={classes.head}>
-              <Text className={classes.title}>{locale.bmi}</Text>
+              <Text onClick={() => router.push("/")} className={classes.title}>
+                {locale.bmi}
+              </Text>
               <ToggleTheme />
             </Box>
           </div>

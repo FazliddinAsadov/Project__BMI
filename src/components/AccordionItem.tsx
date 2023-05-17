@@ -11,7 +11,11 @@ const AccordionItem = ({ SegmentControlItem }: any) => {
           <Text sx={{ fontSize: "14px" }}>{locale.first}</Text>
         </Accordion.Control>
         <Accordion.Panel>
-          <SegmentControlItem />
+          <SegmentControlItem
+            amaliyLink="one/onePractic"
+            tajribaLink="one/oneExpirence"
+            videoLink="one/oneVideo"
+          />
         </Accordion.Panel>
       </Accordion.Item>
       <Accordion.Item value="flexibility">
@@ -19,7 +23,11 @@ const AccordionItem = ({ SegmentControlItem }: any) => {
           <Text sx={{ fontSize: "14px" }}>{locale.second}</Text>
         </Accordion.Control>
         <Accordion.Panel>
-          <SegmentControlItem />
+          <SegmentControlItem
+            amaliyLink="two/twoPractic"
+            tajribaLink="two/twoExpirence"
+            videoLink="two/twoVideo"
+          />
         </Accordion.Panel>
       </Accordion.Item>
       <Accordion.Item value="rhree">
@@ -33,6 +41,14 @@ const AccordionItem = ({ SegmentControlItem }: any) => {
       <Accordion.Item value="four">
         <Accordion.Control>
           <Text sx={{ fontSize: "14px" }}>{locale.fourth}</Text>
+        </Accordion.Control>
+        <Accordion.Panel>
+          <SegmentControlItem />
+        </Accordion.Panel>
+      </Accordion.Item>
+      <Accordion.Item value="five">
+        <Accordion.Control>
+          <Text sx={{ fontSize: "14px" }}>{locale.fifth}</Text>
         </Accordion.Control>
         <Accordion.Panel>
           <SegmentControlItem />
