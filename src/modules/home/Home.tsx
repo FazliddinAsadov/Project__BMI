@@ -1,5 +1,7 @@
 import React from "react";
 import { Box, Text } from "@mantine/core";
+import Image from "next/image";
+import img from "@web/assets/images/image_2023-05-19_20-58-26.png";
 type Props = {};
 export const Home = (props: Props) => {
   return (
@@ -15,10 +17,7 @@ export const Home = (props: Props) => {
         fontWeight: "bold",
       }}
     >
-      <Text>Namangan Muhandistlik Texnalogiya Institutining</Text>
-      <Text>
-        Avtomatika va Energetika fakulteti 21U-19 guruh talabasi Nodir Ahmadov
-      </Text>
+      <Image src={img} alt="image" style={{ width: "100%", height: "auto" }} />
     </Box>
   );
 };

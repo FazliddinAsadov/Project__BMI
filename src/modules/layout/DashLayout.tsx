@@ -178,7 +178,7 @@ export default function DashLayout({
               <Text onClick={() => router.push("/")} className={classes.title}>
                 {locale.bmi}
               </Text>
-              <ToggleTheme />
+              {/* <ToggleTheme /> */}
             </Box>
           </div>
         </Header>
