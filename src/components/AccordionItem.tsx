@@ -12,6 +12,7 @@ const AccordionItem = ({ SegmentControlItem }: any) => {
         </Accordion.Control>
         <Accordion.Panel>
           <SegmentControlItem
+            maruzaLink="one/oneLecture"
             amaliyLink="one/onePractic"
             tajribaLink="one/oneExpirence"
             videoLink="one/oneVideo"
@@ -24,6 +25,7 @@ const AccordionItem = ({ SegmentControlItem }: any) => {
         </Accordion.Control>
         <Accordion.Panel>
           <SegmentControlItem
+            maruzaLink="two/twoLecture"
             amaliyLink="two/twoPractic"
             tajribaLink="two/twoExpirence"
             videoLink="two/twoVideo"
@@ -35,7 +37,12 @@ const AccordionItem = ({ SegmentControlItem }: any) => {
           <Text sx={{ fontSize: "14px" }}>{locale.third}</Text>
         </Accordion.Control>
         <Accordion.Panel>
-          <SegmentControlItem />
+          <SegmentControlItem
+            maruzaLink="three/threeLecture"
+            amaliyLink="three/threePractic"
+            tajribaLink="three/threeExpirence"
+            videoLink="three/threeVideo"
+          />
         </Accordion.Panel>
       </Accordion.Item>
       <Accordion.Item value="four">
@@ -43,7 +50,12 @@ const AccordionItem = ({ SegmentControlItem }: any) => {
           <Text sx={{ fontSize: "14px" }}>{locale.fourth}</Text>
         </Accordion.Control>
         <Accordion.Panel>
-          <SegmentControlItem />
+          <SegmentControlItem
+            maruzaLink="four/fourLecture"
+            amaliyLink="four/fourPractic"
+            tajribaLink="four/fourExpirence"
+            videoLink="four/fourVideo"
+          />
         </Accordion.Panel>
       </Accordion.Item>
       <Accordion.Item value="five">
@@ -51,7 +63,12 @@ const AccordionItem = ({ SegmentControlItem }: any) => {
           <Text sx={{ fontSize: "14px" }}>{locale.fifth}</Text>
         </Accordion.Control>
         <Accordion.Panel>
-          <SegmentControlItem />
+          <SegmentControlItem
+            maruzaLink="five/fiveLecture"
+            amaliyLink="five/fivePractic"
+            tajribaLink="five/fiveExpirence"
+            videoLink="five/fiveVideo"
+          />
         </Accordion.Panel>
       </Accordion.Item>
     </Accordion>

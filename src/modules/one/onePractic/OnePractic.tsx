@@ -6,8 +6,7 @@ const OnePractic = (props: Props) => {
   return (
     <div>
       <iframe
-        // src="https://drive.google.com/file/d/1G1v0wKYruXtjpjcc0ld5yob5tMAqZayl/preview"
-        src="https://drive.google.com/file/d/1Vjic8i9IeP6dY8qfoDmCRjux717buPZ9/preview"
+        src="https://drive.google.com/file/d/1MSL0egeVHRNYqoBZArOxrYn1-tHqnDur/preview"
         width="100%"
         height="700px"
         allow="autoplay"

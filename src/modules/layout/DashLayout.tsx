@@ -16,6 +16,7 @@ import {
   IconMicroscope,
   IconMovie,
   IconUserCircle,
+  IconBrandSlack,
 } from "@tabler/icons-react";
 import AccordionItem from "@web/components/AccordionItem";
 import dataPages from "@web/services/api/dataPages";
@@ -43,47 +44,39 @@ export default function DashLayout({
   const router = useRouter();
   const { classes, cx } = useDashStyle();
   const [fullView, toggleFullView] = useToggle();
-  const [section, setSection] = useState<"amaliy" | "tajriba" | "video">(
-    "amaliy"
-  );
+  const [section, setSection] = useState<
+    "maruza" | "amaliy" | "tajriba" | "video"
+  >();
   const [active, setActive] = useState("Billing");
-
-  const links = dataPages[section].map((item: any) => (
-    <Link
-      key={item.label}
-      href={item.link}
-      style={item.id === activeId ? activeStyle : {}}
-      onClick={() => setActiveId(item.id)}
-      className={cx(classes.link, {
-        linkActive: item.link === router.pathname,
-      })}
-    >
-      <item.icon
-        className={cx(classes.linkIcon, {
-          iconFull: !fullView,
-        })}
-        stroke={1.5}
-      />
-      <span>{item.label}</span>
-    </Link>
-  ));
 
   const SegmentControlItem: React.FC<any> = ({
     amaliyLink,
     tajribaLink,
     videoLink,
+    maruzaLink,
   }) => {
     return (
       <>
         <SegmentedControl
           color="orange"
           value={section}
-          onChange={(value: "amaliy" | "tajriba" | "video") =>
+          onChange={(value: "maruza" | "amaliy" | "tajriba" | "video") =>
             setSection(value)
           }
           transitionTimingFunction="ease"
           fullWidth
           data={[
+            {
+              label: (
+                <Center>
+                  <IconBrandSlack size="1rem" />
+                  <Box ml={10} onClick={() => router.push(`/${maruzaLink}`)}>
+                    {dashLayoutLocale.maruza}
+                  </Box>
+                </Center>
+              ),
+              value: "ma'ruza",
+            },
             {
               label: (
                 <Center>
@@ -140,10 +133,10 @@ export default function DashLayout({
           <Navbar
             // hiddenBreakpoint="sm"
             width={{
-              sm: !fullView ? 330 : "min-content",
-              md: !fullView ? 350 : "min-content",
-              lg: !fullView ? 350 : "min-content",
-              xl: !fullView ? 350 : "min-content",
+              sm: !fullView ? 430 : "min-content",
+              md: !fullView ? 430 : "min-content",
+              lg: !fullView ? 430 : "min-content",
+              xl: !fullView ? 430 : "min-content",
             }}
             sx={{
               position: fullView ? "static" : "fixed",

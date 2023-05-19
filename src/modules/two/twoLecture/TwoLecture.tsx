@@ -2,11 +2,11 @@ import React from "react";
 
 type Props = {};
 
-const OneExpirence = (props: Props) => {
+const TwoLecture = (props: Props) => {
   return (
     <div>
       <iframe
-        src="https://drive.google.com/file/d/1KroAcbOzG-PEeq_Ex89autpulrVGWvFx/preview"
+        src="https://drive.google.com/file/d/1OI_UZIpciMSKVXZ_w7Q3KzbmhmPOiDi9/preview"
         width="100%"
         height="700px"
         allow="autoplay"
@@ -16,4 +16,4 @@ const OneExpirence = (props: Props) => {
   );
 };
 
-export default OneExpirence;
+export default TwoLecture;
