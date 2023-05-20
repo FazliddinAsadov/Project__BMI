@@ -43,12 +43,14 @@ export default function DashLayout({
   const [activeId, setActiveId] = useState(null);
   const router = useRouter();
   const { classes, cx } = useDashStyle();
-  const [fullView, toggleFullView] = useToggle();
+  const [fullView, setToggleFullView] = useState(false);
   const [section, setSection] = useState<
     "maruza" | "amaliy" | "tajriba" | "video"
   >();
   const [active, setActive] = useState("Billing");
-
+  const toogleFullView = () => {
+    setToggleFullView(!fullView);
+  };
   const SegmentControlItem: React.FC<any> = ({
     amaliyLink,
     tajribaLink,
@@ -70,7 +72,12 @@ export default function DashLayout({
               label: (
                 <Center>
                   <IconBrandSlack size="1rem" />
-                  <Box ml={10} onClick={() => router.push(`/${maruzaLink}`)}>
+                  <Box
+                    ml={10}
+                    onClick={() => {
+                      router.push(`/${maruzaLink}`), toogleFullView();
+                    }}
+                  >
                     {dashLayoutLocale.maruza}
                   </Box>
                 </Center>
@@ -81,7 +88,12 @@ export default function DashLayout({
               label: (
                 <Center>
                   <IconAppsFilled size="1rem" />
-                  <Box ml={10} onClick={() => router.push(`/${amaliyLink}`)}>
+                  <Box
+                    ml={10}
+                    onClick={() => {
+                      router.push(`/${amaliyLink}`), toogleFullView();
+                    }}
+                  >
                     {dashLayoutLocale.amaliy}
                   </Box>
                 </Center>
@@ -92,7 +104,12 @@ export default function DashLayout({
               label: (
                 <Center>
                   <IconMicroscope size="1rem" />
-                  <Box ml={10} onClick={() => router.push(`/${tajribaLink}`)}>
+                  <Box
+                    ml={10}
+                    onClick={() => {
+                      router.push(`/${tajribaLink}`), toogleFullView();
+                    }}
+                  >
                     {dashLayoutLocale.tajriba}
                   </Box>
                 </Center>
@@ -103,7 +120,12 @@ export default function DashLayout({
               label: (
                 <Center>
                   <IconMovie size="1rem" />
-                  <Box ml={10} onClick={() => router.push(`/${videoLink}`)}>
+                  <Box
+                    ml={10}
+                    onClick={() => {
+                      router.push(`/${videoLink}`), toogleFullView();
+                    }}
+                  >
                     {dashLayoutLocale.video}
                   </Box>
                 </Center>
@@ -129,7 +151,7 @@ export default function DashLayout({
       navbarOffsetBreakpoint="xs"
       asideOffsetBreakpoint="xs"
       navbar={
-        !fullView ? (
+        fullView ? (
           <Navbar
             // hiddenBreakpoint="sm"
             width={{
@@ -148,8 +170,8 @@ export default function DashLayout({
               <Text className={classes.link}>
                 <Burger
                   size={"sm"}
-                  opened={!fullView}
-                  onClick={() => toggleFullView()}
+                  opened={fullView}
+                  onClick={toogleFullView}
                 />
               </Text>
             )}
@@ -171,8 +193,8 @@ export default function DashLayout({
               size="sm"
               color={theme.colors.gray[6]}
               mr="xl"
-              opened={!fullView}
-              onClick={() => toggleFullView()}
+              opened={fullView}
+              onClick={toogleFullView}
             />
             <Box className={classes.head}>
               <Text onClick={() => router.push("/")} className={classes.title}>
