@@ -155,10 +155,10 @@ export default function DashLayout({
           <Navbar
             // hiddenBreakpoint="sm"
             width={{
-              sm: !fullView ? 430 : "min-content",
-              md: !fullView ? 430 : "min-content",
-              lg: !fullView ? 430 : "min-content",
-              xl: !fullView ? 430 : "min-content",
+              sm: !fullView ? 430 : "max-content",
+              md: !fullView ? 430 : "max-content",
+              lg: !fullView ? 430 : "max-content",
+              xl: !fullView ? 430 : "max-content",
             }}
             sx={{
               position: fullView ? "static" : "fixed",
