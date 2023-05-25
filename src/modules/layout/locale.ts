@@ -4,5 +4,6 @@ const dashLayoutLocale = {
   amaliy: "Amaliy",
   tajriba: "Tajriba",
   video: "Video",
+  quiz: "Mavzulashtirilgan Test",
 };
 export default dashLayoutLocale;

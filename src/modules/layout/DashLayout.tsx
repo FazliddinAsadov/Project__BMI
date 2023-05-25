@@ -10,23 +10,19 @@ import {
   Text,
   useMantineTheme,
 } from "@mantine/core";
-import { useDisclosure, useToggle } from "@mantine/hooks";
+import { useDisclosure } from "@mantine/hooks";
 import {
   IconAppsFilled,
+  IconBrandSlack,
   IconMicroscope,
   IconMovie,
-  IconUserCircle,
-  IconBrandSlack,
 } from "@tabler/icons-react";
 import AccordionItem from "@web/components/AccordionItem";
-import dataPages from "@web/services/api/dataPages";
+import locale from "@web/translate/locale";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import dashLayoutLocale from "./locale";
 import useDashStyle from "./style/useDashStyle";
-import ToggleTheme from "@web/components/darkMode/DarkLightMode";
-import locale from "@web/translate/locale";
-import Link from "next/link";
 
 const activeStyle = {
   background: "#1864AB",
@@ -161,12 +157,12 @@ export default function DashLayout({
               xl: !fullView ? 430 : "max-content",
             }}
             sx={{
-              position: fullView ? "static" : "fixed",
+              // position: fullView ? "static" : "fixed",
               zIndex: 999,
             }}
             p={!fullView ? "md" : 0}
           >
-            {fullView && (
+            {/* {fullView && (
               <Text className={classes.link}>
                 <Burger
                   size={"sm"}
@@ -174,13 +170,22 @@ export default function DashLayout({
                   onClick={toogleFullView}
                 />
               </Text>
-            )}
+            )} */}
             <Group>
               <Text className={classes.bob} pl={20}>
                 {dashLayoutLocale.bob}
               </Text>
             </Group>
             <AccordionItem SegmentControlItem={SegmentControlItem} />
+            <Group
+              sx={{ cursor: "pointer" }}
+              onClick={() => {
+                router.push("/quiz");
+                toogleFullView();
+              }}
+            >
+              <Text pl={20}>{dashLayoutLocale.quiz}</Text>
+            </Group>
           </Navbar>
         ) : (
           <></>
