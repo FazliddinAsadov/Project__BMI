@@ -54,7 +54,7 @@ const Quiz = () => {
               {questions.length} {quizLocale.of} {score} {quizLocale.correct} -
               ({(score / questions.length) * 100}%)
             </Text>
-            {score === 7 ? (
+            {score >= 7 ? (
               <Text color="green" size={22} weight={700} py={4}>
                 {quizLocale.perfectScore}
               </Text>
