@@ -60,6 +60,51 @@ const questions = [
       { id: 3, text: " Vektor ", isCorrect: false },
     ],
   },
+  {
+    text: "Tasvir formatlari qaysi javobda to’g’ri ko’rsatilgan?",
+    options: [
+      { id: 0, text: " xls, doc, tiff, jpg, gif ", isCorrect: false },
+      { id: 1, text: " mdb, dll,  jpg, gif, tiff ", isCorrect: false },
+      { id: 2, text: " bmp, zip, exe,  jpg, gif: false " },
+      { id: 3, text: " bmp, tiff, jpg, gif ", isCorrect: true },
+    ],
+  },
+  {
+    text: " Piksel -  ekrandagi tasvirni ifodalovchi nuqta bo’lib qanday geometrik shaklni ifodalaydi?",
+    options: [
+      { id: 0, text: " Rangli to’g’ri tortburchak ", isCorrect: true },
+      { id: 1, text: " Rangli parallelopiped ", isCorrect: false },
+      { id: 2, text: " Oq-qora kvadrat ", isCorrect: false },
+      { id: 3, text: " Rangli aylana ", isCorrect: false },
+    ],
+  },
+  {
+    text: "Rastr grafikasining asosi piksel  so’zi qaysi so’zlardan olingan?",
+    options: [
+      { id: 0, text: "Picture element", isCorrect: true },
+      { id: 1, text: " Picket element ", isCorrect: false },
+      { id: 2, text: " Pictorial election ", isCorrect: false },
+      { id: 3, text: " Picturesque element ", isCorrect: false },
+    ],
+  },
+  {
+    text: " Ma’lumki, AutoCad – chizmani komputerda tahrirlash dasturi bo’lib, qaysi firma tomonidan ishlab chiqilgan !",
+    options: [
+      { id: 0, text: " Canon ", isCorrect: false },
+      { id: 1, text: " Autodesk ", isCorrect: true },
+      { id: 2, text: " Microsoft Office ", isCorrect: false },
+      { id: 3, text: " Apple ", isCorrect: false },
+    ],
+  },
+  {
+    text: " AutoCAD dasturi bilan ishlashda nimani to’g’ri  aniqlab, tushunib olish juda muhim hisoblanadi?",
+    options: [
+      { id: 0, text: " Ob’yekt tushunchasini ", isCorrect: false },
+      { id: 1, text: " Agoritm tushunchasini ", isCorrect: true },
+      { id: 2, text: "Dasturlash tushunchasini ", isCorrect: true },
+      { id: 3, text: " Loyihalash tushunchasini ", isCorrect: false },
+    ],
+  },
 ];
 
 export default questions;

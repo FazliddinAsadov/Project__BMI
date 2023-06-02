@@ -54,7 +54,7 @@ const Quiz = () => {
               {questions.length} {quizLocale.of} {score} {quizLocale.correct} -
               ({(score / questions.length) * 100}%)
             </Text>
-            {score === 5 ? (
+            {score === 7 ? (
               <Text color="green" size={22} weight={700} py={4}>
                 {quizLocale.perfectScore}
               </Text>
@@ -84,7 +84,7 @@ const Quiz = () => {
           {/* List of possible answers  */}
 
           <Text component="ul" py={4} size="lg">
-            {questions[currentQuestion].options.map((option) => {
+            {questions[currentQuestion].options.map((option: any) => {
               return (
                 <Text
                   component="li"

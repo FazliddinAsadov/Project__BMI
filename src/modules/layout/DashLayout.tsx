@@ -23,6 +23,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import dashLayoutLocale from "./locale";
 import useDashStyle from "./style/useDashStyle";
+import Link from "next/link";
 
 const activeStyle = {
   background: "#1864AB",
@@ -185,6 +186,11 @@ export default function DashLayout({
               }}
             >
               <Text pl={20}>{dashLayoutLocale.quiz}</Text>
+            </Group>
+            <Group py={20} sx={{ cursor: "pointer" }}>
+              <Link href={"https://t.me/autocaddownload2022"}>
+                <Text pl={20}>{dashLayoutLocale.autocad_download}</Text>
+              </Link>
             </Group>
           </Navbar>
         ) : (
